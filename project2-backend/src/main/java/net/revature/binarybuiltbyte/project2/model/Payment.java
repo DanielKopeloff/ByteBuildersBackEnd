@@ -17,12 +17,12 @@ public class Payment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
     @Column(name = "credit_card")
     private String creditCard;
 
-    @Column(name = "user_id")
-    private String userId;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
+    private User userId;
 }

@@ -20,9 +20,10 @@ public class Review {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "user_id")
-    private String userId;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product productId;
 
-    @Column(name = "user_comment")
-    private String userComment;
+    @Column(name = "user_review")
+    private String userReview;
 }

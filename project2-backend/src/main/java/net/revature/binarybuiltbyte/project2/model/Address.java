@@ -20,8 +20,9 @@ public class Address {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "user_id")
-    private String userId;
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name="user_id")
+    private User userId;
 
     @Column(name = "street_address")
     private String streetAddress;
@@ -34,4 +35,5 @@ public class Address {
 
     @Column(name = "zip")
     private String zip;
+
 }
