@@ -6,9 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "category")
 @Data
 @Builder
 @NoArgsConstructor
@@ -25,4 +26,8 @@ public class Category {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "categoryId")
+    private Set<Product> product;
 }
+
