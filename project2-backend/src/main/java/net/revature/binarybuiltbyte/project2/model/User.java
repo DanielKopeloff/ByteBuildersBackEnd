@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "byte_user")// shouldn't be users but byte_user or something like that
 @Data
 @Builder
 @NoArgsConstructor
@@ -37,6 +37,4 @@ public class User {
 
     @Column(name = "role_id")
     private int roleId;
-
-
 }
