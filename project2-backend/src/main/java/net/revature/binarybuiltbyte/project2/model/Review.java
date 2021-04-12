@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "review")
 @Data
 @Builder
 @NoArgsConstructor
@@ -23,6 +22,5 @@ public class Review {
     @Column(name = "user_id")
     private String userId;
 
-    @Column(name = "user_comment")
-    private String userComment;
+    private String comment;
 }

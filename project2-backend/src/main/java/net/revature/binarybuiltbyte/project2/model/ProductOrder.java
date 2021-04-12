@@ -8,22 +8,23 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "order")
+@Table(name = "product_order")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Order {
+public class ProductOrder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @Column(name = "payment_id")
-    private String paymentId;
+    private int quantity;
 
-    @Column(name = "status_id")
-    private String statusId;
+    @Column(name = "order_id")
+    private int orderId;
+
+    @Column(name = "product_id")
+    private int productId;
 
 }

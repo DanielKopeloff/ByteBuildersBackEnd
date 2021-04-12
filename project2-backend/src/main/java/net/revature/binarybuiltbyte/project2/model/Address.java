@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "address")
 @Data
 @Builder
 @NoArgsConstructor
@@ -17,21 +16,20 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
-
-    @Column(name = "user_id")
-    private String userId;
 
     @Column(name = "street_address")
     private String streetAddress;
 
-    @Column(name = "city")
     private String city;
 
-    @Column(name = "state")
     private String state;
 
-    @Column(name = "zip")
     private String zip;
+
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "user_id")
+    private ByteUser byteUser;
 }
