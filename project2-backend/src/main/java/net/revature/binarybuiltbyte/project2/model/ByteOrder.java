@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -30,6 +32,13 @@ public class ByteOrder {
             insertable = false,
             updatable = false)
     private ByteUser user;
+
+    @Column(name = "order_created")
+    @CreationTimestamp
+    private Date orderCreated;
+
+    @Column(name = "order_completed")
+    private Date orderCompleted;
 
     @ManyToMany(
             fetch = FetchType.LAZY,
