@@ -58,4 +58,10 @@ public class ByteUser {
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
     private List<ByteOrder> byteOrders;
 
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            mappedBy = "byteUser",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
+    private List<Review> reviews;
+
 }

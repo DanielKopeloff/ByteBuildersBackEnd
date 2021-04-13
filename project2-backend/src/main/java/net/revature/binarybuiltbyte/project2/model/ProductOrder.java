@@ -29,11 +29,5 @@ public class ProductOrder {
     @Column(name = "product_id")
     private int productId;
 
-    @OneToMany(
-            mappedBy = "order",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    private List<OrderProduct> products = new ArrayList<>();
 
 }

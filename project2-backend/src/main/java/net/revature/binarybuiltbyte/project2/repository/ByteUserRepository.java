@@ -1,4 +1,4 @@
-package net.revature.binarybuiltbyte.project2.dao;
+package net.revature.binarybuiltbyte.project2.repository;
 
 import net.revature.binarybuiltbyte.project2.model.ByteUser;
 import org.springframework.data.jpa.repository.JpaRepository;
