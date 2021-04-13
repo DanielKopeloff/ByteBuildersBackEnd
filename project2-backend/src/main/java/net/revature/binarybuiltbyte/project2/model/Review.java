@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Data
@@ -19,9 +21,19 @@ public class Review {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "product_id")
-    private Product productId;
-
     private String comment;
+
+    @Column(name = "review_created")
+    @CreationTimestamp
+    private Date reviewCreated;
+
+    @Column(name = "review_terminated")
+    private Date reviewTerminated;
+
+    @Column(name = "user_id")
+    private String userId;
+
+    @Column(name = "product_id")
+    private String productId;
+
 }

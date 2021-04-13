@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -39,6 +40,7 @@ public class ByteUser {
     private int byteRole;
 
     @Column(name = "user_created")
+    @CreationTimestamp
     private Date userCreated;
 
     @Column(name = "user_terminated")
@@ -55,4 +57,5 @@ public class ByteUser {
             mappedBy = "user",
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
     private List<ByteOrder> byteOrders;
+
 }
