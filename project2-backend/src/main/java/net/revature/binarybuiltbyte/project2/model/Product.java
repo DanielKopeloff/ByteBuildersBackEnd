@@ -47,11 +47,11 @@ public class Product {
     @Column(name = "product_terminated")
     private Date productTerminated;
 
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            mappedBy = "product",
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-    private List<Review> reviews;
+//    @OneToMany(
+//            fetch = FetchType.LAZY,
+//            mappedBy = "product",
+//            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
+//    private List<Review> reviews;
 
     @ManyToMany(
             fetch = FetchType.LAZY,
