@@ -4,55 +4,48 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Table(name = "byte_order")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Product {
+public class ByteOrder {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String description;
-
-    private int stock;
-
-    private double price;
-
-    private String sku;
-
-    @Column(name = "is_active")
-    private boolean isActive;
-
-    private int rating;
+    private int status;
 
     @ManyToOne(
             fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @JoinColumn(
+            name = "user_id",
+            insertable = false,
+            updatable = false)
+    private ByteUser user;
 
-    @Column(name = "product_created")
-    private Date productCreated;
+    @Column(name = "order_created")
+    @CreationTimestamp
+    private Date orderCreated;
 
-    @Column(name = "product_terminated")
-    private Date productTerminated;
+    @Column(name = "order_completed")
+    private Date orderCompleted;
 
     @ManyToMany(
             fetch = FetchType.LAZY,
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(
             name = "order_products",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
-    private List<ByteOrder> byteOrders;
-
-
+            joinColumns = @JoinColumn(name = "order_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private List<Product> products;
 }

@@ -4,11 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
-@Table(name = "payment")
 @Data
 @Builder
 @NoArgsConstructor
@@ -22,7 +23,11 @@ public class Payment {
     @Column(name = "credit_card")
     private String creditCard;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "user_id")
-    private User userId;
+    @Column(name = "user_id")
+    private String userId;
+    
+    @Column(name = "payment_created")
+    @CreationTimestamp
+    private Date paymentCreated;
+
 }
