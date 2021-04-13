@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -22,7 +23,8 @@ public class ByteOrder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private int status;
+    @Enumerated(EnumType.ORDINAL)
+    private Status status;
 
     @ManyToOne(
             fetch = FetchType.LAZY,
@@ -46,4 +48,5 @@ public class ByteOrder {
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<Product> products;
+
 }

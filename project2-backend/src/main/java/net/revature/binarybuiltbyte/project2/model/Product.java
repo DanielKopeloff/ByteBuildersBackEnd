@@ -28,6 +28,8 @@ public class Product {
 
     private String sku;
 
+    private String picture;
+
     @Column(name = "is_active")
     private boolean isActive;
 

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.Month;
+import java.time.Year;
 import java.util.Date;
 
 @Entity
@@ -23,8 +25,14 @@ public class Payment {
     @Column(name = "credit_card")
     private String creditCard;
 
-    @Column(name = "user_id")
-    private String userId;
+    @Column(name = "expiration_date_month")
+    private Month expirationDateMonth;
+
+    @Column(name="expiration_date_year")
+    private Year expirationDateYear;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    private ByteUser userId;
     
     @Column(name = "payment_created")
     @CreationTimestamp

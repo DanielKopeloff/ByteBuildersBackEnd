@@ -36,8 +36,11 @@ public class ByteUser {
 
     private String email;
 
+    private String profilePic;
+
     @Column(name = "byte_role")
-    private int byteRole;
+    @Enumerated(EnumType.ORDINAL)
+    private Role byteRole;
 
     @Column(name = "user_created")
     @CreationTimestamp
