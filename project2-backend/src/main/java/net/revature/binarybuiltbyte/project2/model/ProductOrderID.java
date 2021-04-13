@@ -16,8 +16,8 @@ import java.io.Serializable;
 public class ProductOrderID implements Serializable {
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    private ByteUser userId;
+    private ByteUser user;
     @OneToOne(cascade = CascadeType.PERSIST)
-    private Product productId;
+    private Product product;
 
 }

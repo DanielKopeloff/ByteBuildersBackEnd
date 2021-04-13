@@ -35,18 +35,4 @@ public class Review  {
     private Date reviewTerminated;
 
 
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "product_id")
-    private Product product;
-
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "user_id",
-            insertable = false,
-            updatable = false)
-    private ByteUser byteUser;
-
 }
