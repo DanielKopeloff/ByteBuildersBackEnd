@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "payment")
 @Data
 @Builder
 @NoArgsConstructor

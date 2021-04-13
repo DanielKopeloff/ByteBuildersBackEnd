@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "review")
 @Data
 @Builder
 @NoArgsConstructor
@@ -24,6 +23,5 @@ public class Review {
     @JoinColumn(name = "product_id")
     private Product productId;
 
-    @Column(name = "user_review")
-    private String userReview;
+    private String comment;
 }

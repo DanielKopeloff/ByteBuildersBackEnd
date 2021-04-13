@@ -6,10 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
-@Table(name = "category")
 @Data
 @Builder
 @NoArgsConstructor
@@ -18,16 +17,16 @@ public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "category_name")
+    private String categoryName;
 
-    @Column(name = "description")
-    private String description;
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            mappedBy = "category",
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
+    private List<Product> products;
 
-    @OneToMany(mappedBy = "categoryId")
-    private Set<Product> product;
 }
 
