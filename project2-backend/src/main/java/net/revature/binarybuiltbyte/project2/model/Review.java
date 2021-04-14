@@ -4,26 +4,45 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.Properties;
 
 @Entity
-@Table(name = "review")
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Review {
+public class Review  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    private int review_id;
 
-    @ManyToOne
+    private String comment;
+
+    @Column(name = "review_created")
+    @CreationTimestamp
+    private Date reviewCreated;
+
+    @Column(name = "review_terminated")
+    private Date reviewTerminated;
+
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(name = "product_id")
-    private Product productId;
+    private Product product;
 
-    @Column(name = "user_review")
-    private String userReview;
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "user_id",
+            insertable = false,
+            updatable = false)
+    private ByteUser byteUser;
+
+
 }

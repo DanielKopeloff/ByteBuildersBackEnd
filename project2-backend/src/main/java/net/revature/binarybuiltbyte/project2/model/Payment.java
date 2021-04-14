@@ -4,11 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.Month;
+import java.time.Year;
+import java.util.Date;
 
 @Entity
-@Table(name = "payment")
 @Data
 @Builder
 @NoArgsConstructor
@@ -22,7 +25,17 @@ public class Payment {
     @Column(name = "credit_card")
     private String creditCard;
 
+    @Column(name = "expiration_date_month")
+    private Month expirationDateMonth;
+
+    @Column(name="expiration_date_year")
+    private String expirationDateYear;
+
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "user_id")
-    private User userId;
+    private ByteUser userId;
+    
+    @Column(name = "payment_created")
+    @CreationTimestamp
+    private Date paymentCreated;
+
 }
