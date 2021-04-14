@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
+import java.util.Properties;
 
 @Entity
 @Data
@@ -17,13 +17,9 @@ import java.util.Date;
 @AllArgsConstructor
 public class Review  {
 
-    /**
-     * My thinking for this implementation of composite keys is to ensure that a user can only review a product
-     * once. Since its composite the combination of the both userId and the ProductId must be unique.
-     * Normally i hate this but i cant think of another way
-     */
-    @EmbeddedId
-    private ProductOrderID productOrderID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int review_id;
 
     private String comment;
 
@@ -33,6 +29,20 @@ public class Review  {
 
     @Column(name = "review_terminated")
     private Date reviewTerminated;
+
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "product_id")
+    private Product product;
+
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = "user_id",
+            insertable = false,
+            updatable = false)
+    private ByteUser byteUser;
 
 
 }

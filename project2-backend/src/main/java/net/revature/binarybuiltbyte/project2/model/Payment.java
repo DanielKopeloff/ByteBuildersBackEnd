@@ -29,7 +29,7 @@ public class Payment {
     private Month expirationDateMonth;
 
     @Column(name="expiration_date_year")
-    private Year expirationDateYear;
+    private String expirationDateYear;
 
     @OneToOne(cascade = CascadeType.PERSIST)
     private ByteUser userId;
