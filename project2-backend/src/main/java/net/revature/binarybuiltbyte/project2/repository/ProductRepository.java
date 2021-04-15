@@ -19,4 +19,4 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value="select p.id, p.description, p.is_active,  p.picture, p.price, p.product_created, p.product_terminated, p.rating, p.sku, p.stock, p.category_id from product p join product_order po on p.id=po.product_id join byte_order bo on bo.id=po.order_id where bo.order_completed between :past and :now ;", nativeQuery = true)
     List<Product> findProductsByDate(@Param("past") Date past, @Param("now") Date now);
 }
-//"select p.description, p.rating, p.picture, p.price, p.stock, p.sku from product p join product_order po on p.id=po.product_id join byte_order bo on bo.id=po.order_id where bo.order_completed between :past and :now ;"
+
