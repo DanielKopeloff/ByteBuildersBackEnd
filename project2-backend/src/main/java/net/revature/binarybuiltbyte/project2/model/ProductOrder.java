@@ -28,5 +28,4 @@ public class ProductOrder {
     @MapsId("byteOrderId")
     private ByteOrder byteOrder;
 
-
 }

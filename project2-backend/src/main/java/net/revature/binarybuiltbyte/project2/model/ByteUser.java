@@ -8,7 +8,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "byte_user")
@@ -53,23 +53,17 @@ public class ByteUser {
             fetch = FetchType.LAZY,
             mappedBy = "byteUser",
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-    private List<Address> addresses;
+    private Set<Address> addresses;
 
     @OneToMany(
             fetch = FetchType.LAZY,
             mappedBy = "byteUser",
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-    private List<ByteOrder> byteOrders;
-
-//    @OneToMany(
-//            fetch = FetchType.LAZY,
-//            mappedBy = "byteUser",
-//            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-//    private List<Review> reviews;
+    private Set<ByteOrder> byteOrders;
 
     @OneToMany(
             fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    @JoinColumn(name="user_id")
-    private List<Review> reviews;
+    private Set<Review> reviews;
+
 }

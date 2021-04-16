@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,11 +21,11 @@ public class Category {
 
     private String categoryName;
 
-//    @OneToMany(
-//            fetch = FetchType.LAZY,
-//            mappedBy = "category",
-//            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-//    private Set<Product> products;
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy="category")
+    private Set<Product> products;
 
 }
 
