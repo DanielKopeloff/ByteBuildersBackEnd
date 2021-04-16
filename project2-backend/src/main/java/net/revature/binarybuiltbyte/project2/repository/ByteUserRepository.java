@@ -8,4 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin("http://localhost:4200")
 @RepositoryRestResource(collectionResourceRel = "byteUsers", path = "byte-user")
 public interface ByteUserRepository extends JpaRepository<ByteUser, Integer> {
+
+    ByteUser findByUsername(String username);
 }
