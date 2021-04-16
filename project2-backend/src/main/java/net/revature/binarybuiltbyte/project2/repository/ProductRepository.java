@@ -1,6 +1,8 @@
 package net.revature.binarybuiltbyte.project2.repository;
 
 import net.revature.binarybuiltbyte.project2.model.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -13,9 +15,15 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
+
 @CrossOrigin("http://localhost:4200")
 @RepositoryRestResource(collectionResourceRel = "products", path = "product")
 public interface ProductRepository extends JpaRepository<Product, Integer> {
+
+
+    //Page<Product> findByCategoryId(@RequestParam("id") Integer id, Pageable pageable);
+    //Page<Product> findByDescriptionContaining(@RequestParam("name") String name, Pageable pageable);
+
 
     /** this endpoint could be used for hot products to buy.
      *
@@ -81,5 +89,6 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Query(value="select p.id, p.description, p.is_active,  p.picture, p.price, p.product_created, p.product_terminated, p.rating, p.sku, p.stock, p.category_id from product p join product_order po on p.id=po.product_id join byte_order bo on bo.id=po.order_id join byte_user bu on bu.id = po.id where bu.id = :userId ;", nativeQuery = true)
     @RestResource(path = "shopping_history", rel = "shopping_history")
     List<Product> findShoppingHistoryById(@Param("userId") int userId);
+
 }
 

@@ -6,6 +6,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @CrossOrigin("http://localhost:4200")
-@RepositoryRestResource(collectionResourceRel = "byteOrder", path = "byte-order")
+@RepositoryRestResource(collectionResourceRel = "byteOrders", path = "byte-order")
 public interface ByteOrderRepository extends JpaRepository<ByteOrder, Integer> {
 }

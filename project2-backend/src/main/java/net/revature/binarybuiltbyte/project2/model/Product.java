@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -35,31 +36,20 @@ public class Product {
 
     private int rating;
 
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "category_id")
-    private Category category;
-
     @Column(name = "product_created")
+    @CreationTimestamp
     private Date productCreated;
 
     @Column(name = "product_terminated")
     private Date productTerminated;
 
-//    @OneToMany(
-//            fetch = FetchType.LAZY,
-//            mappedBy = "product",
-//            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-//    private List<Review> reviews;
-
-    @ManyToMany(
+    @OneToMany(
             fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(
-            name = "product_order",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
-    private List<ByteOrder> byteOrders;
+            cascade = CascadeType.ALL,
+            mappedBy="product")
+    private List<Review> reviews;
 
+    @ManyToOne
+    private Category category;
+    
 }

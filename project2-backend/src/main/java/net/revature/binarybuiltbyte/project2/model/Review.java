@@ -8,7 +8,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Properties;
 
 @Entity
 @Data
@@ -19,7 +18,7 @@ public class Review  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int review_id;
+    private int id;
 
     private String comment;
 
@@ -30,19 +29,7 @@ public class Review  {
     @Column(name = "review_terminated")
     private Date reviewTerminated;
 
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "product_id")
+    @ManyToOne
     private Product product;
-
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "user_id",
-            insertable = false,
-            updatable = false)
-    private ByteUser byteUser;
-
 
 }

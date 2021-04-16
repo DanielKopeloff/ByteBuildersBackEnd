@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "product_order")
@@ -17,17 +15,17 @@ import java.util.List;
 @AllArgsConstructor
 public class ProductOrder {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @EmbeddedId
+    private ProductOrderId id = new ProductOrderId();
 
     private int quantity;
 
-    @Column(name = "order_id")
-    private int orderId;
+    @ManyToOne
+    @MapsId("productId")
+    private Product product;
 
-    @Column(name = "product_id")
-    private int productId;
-
+    @ManyToOne
+    @MapsId("byteOrderId")
+    private ByteOrder byteOrder;
 
 }
