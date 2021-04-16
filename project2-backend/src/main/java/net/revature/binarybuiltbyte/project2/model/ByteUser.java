@@ -57,14 +57,19 @@ public class ByteUser {
 
     @OneToMany(
             fetch = FetchType.LAZY,
-            mappedBy = "user",
+            mappedBy = "byteUser",
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
     private List<ByteOrder> byteOrders;
 
 //    @OneToMany(
 //            fetch = FetchType.LAZY,
-//            mappedBy = "user",
+//            mappedBy = "byteUser",
 //            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-//    private List<ProductOrderID> reviews;
+//    private List<Review> reviews;
 
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private List<Review> reviews;
 }

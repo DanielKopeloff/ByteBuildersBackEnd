@@ -8,7 +8,9 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -47,19 +49,28 @@ public class Product {
     @Column(name = "product_terminated")
     private Date productTerminated;
 
-//    @OneToMany(
-//            fetch = FetchType.LAZY,
-//            mappedBy = "product",
-//            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-//    private List<Review> reviews;
-
-    @ManyToMany(
+    @OneToMany(
             fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(
-            name = "product_order",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
-    private List<ByteOrder> byteOrders;
+            cascade = CascadeType.ALL)
+    @JoinColumn(name="product_id")
+    private List<Review> reviews;
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade =  {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name="product_id")
+    private List<Category> categories;
+
+    @OneToMany(mappedBy = "product")
+    private Set<ProductOrder> productOrders = new HashSet<>();
+
+//    @ManyToMany(
+//            fetch = FetchType.LAZY,
+//            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+//    @JoinTable(
+//            name = "product_order",
+//            joinColumns = @JoinColumn(name = "product_id"),
+//            inverseJoinColumns = @JoinColumn(name = "order_id"))
+//    private Set<ByteOrder> byteOrders;
 
 }

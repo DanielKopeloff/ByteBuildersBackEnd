@@ -4,12 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.revature.binarybuiltbyte.project2.model.ByteUser;
+import net.revature.binarybuiltbyte.project2.model.ProductOrder;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "byte_order")
@@ -31,7 +35,7 @@ public class ByteOrder {
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinColumn(
             name = "user_id")
-    private ByteUser user;
+    private ByteUser byteUser;
 
     @Column(name = "order_created")
     @CreationTimestamp
@@ -40,13 +44,7 @@ public class ByteOrder {
     @Column(name = "order_completed")
     private Date orderCompleted;
 
-    @ManyToMany(
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(
-            name = "product_order",
-            joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Product> products;
+    @OneToMany(mappedBy = "byteOrder")
+    private Set<ProductOrder> productOrders = new HashSet<>();
 
 }

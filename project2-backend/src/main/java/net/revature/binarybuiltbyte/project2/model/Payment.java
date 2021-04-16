@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import net.revature.binarybuiltbyte.project2.model.ByteUser;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;

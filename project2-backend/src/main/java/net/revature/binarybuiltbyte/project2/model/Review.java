@@ -19,7 +19,7 @@ public class Review  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int review_id;
+    private int id;
 
     private String comment;
 
@@ -30,19 +30,20 @@ public class Review  {
     @Column(name = "review_terminated")
     private Date reviewTerminated;
 
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "product_id")
-    private Product product;
+//    @ManyToOne(
+//            fetch = FetchType.LAZY,
+//            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+//    private Product product;
 
-    @ManyToOne(
-            fetch = FetchType.LAZY,
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "user_id",
-            insertable = false,
-            updatable = false)
-    private ByteUser byteUser;
+//    @ManyToOne(
+//            fetch = FetchType.LAZY,
+//            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+//    @JoinColumn(name = "user_id")
+//    private ByteUser byteUser;
+
+//    @OneToOne
+//    @JoinColumn(name = "user_id")
+//    private ByteUser byteUser;
 
 
 }
