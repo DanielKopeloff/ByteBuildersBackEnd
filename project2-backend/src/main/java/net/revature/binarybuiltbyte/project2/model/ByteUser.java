@@ -61,9 +61,9 @@ public class ByteUser {
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
     private Set<ByteOrder> byteOrders;
 
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL)
-    private Set<Review> reviews;
+//    @OneToMany(
+//            fetch = FetchType.LAZY,
+//            cascade = CascadeType.ALL)
+//    private Set<Review> reviews;
 
 }

@@ -34,7 +34,8 @@ public class Product {
     @Column(name = "is_active")
     private boolean isActive;
 
-    private int rating;
+    @Column(nullable=true)
+    private int rating;// averaged from the comments
 
     @Column(name = "product_created")
     @CreationTimestamp
@@ -43,11 +44,11 @@ public class Product {
     @Column(name = "product_terminated")
     private Date productTerminated;
 
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            mappedBy="product")
-    private List<Review> reviews;
+//    @OneToMany(
+//            fetch = FetchType.LAZY,
+//            cascade = CascadeType.ALL,
+//            mappedBy="product")
+//    private List<Review> reviews;
 
     @ManyToOne
     private Category category;

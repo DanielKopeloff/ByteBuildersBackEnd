@@ -9,6 +9,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -40,5 +41,11 @@ public class ByteOrder {
 
     @OneToMany(mappedBy = "byteOrder")
     private Set<ProductOrder> productOrders = new HashSet<>();
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy="byteOrder")
+    private List<Review> reviews;
 
 }

@@ -4,10 +4,12 @@ import net.revature.binarybuiltbyte.project2.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 import org.springframework.data.rest.core.annotation.RestResource;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -15,15 +17,12 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
-
 @CrossOrigin("http://localhost:4200")
 @RepositoryRestResource(collectionResourceRel = "products", path = "product")
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
-
-    //Page<Product> findByCategoryId(@RequestParam("id") Integer id, Pageable pageable);
-    //Page<Product> findByDescriptionContaining(@RequestParam("name") String name, Pageable pageable);
-
+    Page<Product> findByCategoryId(@RequestParam("id") Integer id, Pageable pageable);
+    Page<Product> findByDescriptionContaining(@RequestParam("name") String name, Pageable pageable);
 
     /** this endpoint could be used for hot products to buy.
      *
@@ -31,7 +30,7 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
      * @param now the current time
      * @return returns the list of products which are "hot" for being bought between the two dates specified.
      */
-    @Query(value="select p.id, p.description, p.is_active,  p.picture, p.price, p.product_created, p.product_terminated, p.rating, p.sku, p.stock, p.category_id from product p join product_order po on p.id=po.product_id join byte_order bo on bo.id=po.order_id where bo.order_completed between :past and :now ;", nativeQuery = true)
+    @Query(value="select p.id, p.description, p.is_active,  p.picture, p.price, p.product_created, p.product_terminated, p.rating, p.sku, p.stock, p.category_id from product p join product_order po on p.id=po.product_id join byte_order bo on bo.id=po.byte_order_id where bo.order_completed between :past and :now ;", nativeQuery = true)
     @RestResource(path = "hot", rel = "hot")
     List<Product> findProductsByDate(@Param("past") Date past, @Param("now") Date now);
 
@@ -86,9 +85,24 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
      * @param userId enter the userId for the person
      * @return returns list of products user has bought in the past.
      */
-    @Query(value="select p.id, p.description, p.is_active,  p.picture, p.price, p.product_created, p.product_terminated, p.rating, p.sku, p.stock, p.category_id from product p join product_order po on p.id=po.product_id join byte_order bo on bo.id=po.order_id join byte_user bu on bu.id = po.id where bu.id = :userId ;", nativeQuery = true)
+    @Query(value="select p.id, p.description, p.is_active,  p.picture, p.price, p.product_created, p.product_terminated, p.rating, p.sku, p.stock, p.category_id from product p join product_order po on p.id=po.product_id join byte_order bo on bo.id=po.byte_order_id join byte_user bu on bu.id = bo.id where bu.id = :userId ;", nativeQuery = true)
     @RestResource(path = "shopping_history", rel = "shopping_history")
     List<Product> findShoppingHistoryById(@Param("userId") int userId);
 
+    @Transactional
+    @Modifying
+    @Query(value="update product set price = price-price *:percentage where category_id = :categoryId ;", nativeQuery = true)//works with url parameters inputed with a get, throws an error but updates db...
+    @RestResource(path = "sale_by_category", rel = "sale_by_category")
+    void decreaseProductValueByCategoryId(@Param("percentage") double percentage, @Param("categoryId") int categoryId);
+
+    @Transactional
+    @Modifying
+    @Query(value="update product set rating = (select avg(r.rating) from review r join byte_order bo on r.byte_order_id = bo.id \n" +
+            "    join product_order po on po.byte_order_id = bo.id\n" +
+            "    join product on po.product_id =product.id\n" +
+            "    where product.id = :productId)\n" +
+            "    where product.id = :productId ;", nativeQuery = true)//works with url parameters inputed with a get, throws an error but updates db...
+    @RestResource(path = "update_product_rating", rel = "update_product_rating")
+    void updateProductAverageRating(@Param("productId") int productId);
 }
 
