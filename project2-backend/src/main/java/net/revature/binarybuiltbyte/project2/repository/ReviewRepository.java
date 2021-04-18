@@ -20,9 +20,7 @@ public interface ReviewRepository extends JpaRepository<Review, Integer> {
      * @param productId product id for all of its reviews
      * @return a list of reviews for given product id
      */
-    @Query(value="select r.id, r.\"comment\" , r.rating, r.review_created, r.review_terminated, r.byte_order_id from review r join byte_order bo on r.byte_order_id=bo.id\n" +
-            "join product_order po on po.byte_order_id = bo.id\n" +
-            "where po.product_id = :productId ;", nativeQuery = true)
+    @Query(value="select r.id, r.\"comment\" , r.rating, r.review_created, r.review_terminated, r.byte_order_id from review r join byte_order bo on r.byte_order_id=bo.id join product_order po on po.byte_order_id = bo.id where po.product_id = :productId ;", nativeQuery = true)
     @RestResource(path = "product_reviews", rel = "product_reviews")
     List<Review> findAllReviewsForProduct(@Param("productId") int productId);
 }

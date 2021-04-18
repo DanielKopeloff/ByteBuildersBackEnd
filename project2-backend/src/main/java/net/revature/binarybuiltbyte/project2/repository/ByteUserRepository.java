@@ -21,10 +21,7 @@ public interface ByteUserRepository extends JpaRepository<ByteUser, Integer> {
      * @param byteOrderId unique id for each order that can match a review to a user
      * @return user for byte_order review
      */
-    @Query(value="    select bu.id, bu.byte_role, bu.email, bu.first_name, bu.last_name, bu.\"password\", bu.profile_pic," +
-            " bu.user_created, bu.user_terminated, bu.username from byte_user bu join byte_order bo on bo.byte_user_id = bu.id\n" +
-            "    join review r on r.byte_order_id = bo.id\n" +
-            "    where bo.id = :byteOrderId;", nativeQuery = true)
+    @Query(value="select bu.id, bu.byte_role, bu.email, bu.first_name, bu.last_name, bu.\"password\", bu.profile_pic, bu.user_created, bu.user_terminated, bu.username from byte_user bu join byte_order bo on bo.byte_user_id = bu.id join review r on r.byte_order_id = bo.id where bo.id = :byteOrderId ;", nativeQuery = true)
     @RestResource(path = "byte_order_review", rel = "byte_order_review")
     List<ByteUser> findByteUserByByteOrder(@Param("byteOrderId") int byteOrderId);
 }
