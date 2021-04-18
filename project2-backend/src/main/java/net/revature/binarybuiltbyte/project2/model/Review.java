@@ -29,7 +29,13 @@ public class Review  {
     @Column(name = "review_terminated")
     private Date reviewTerminated;
 
+//    @ManyToOne
+//    private Product product;
+
     @ManyToOne
-    private Product product;
+    private ByteOrder byteOrder;
+
+    @Column(name = "rating")
+    private int rating;
 
 }

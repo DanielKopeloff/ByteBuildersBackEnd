@@ -31,7 +31,7 @@ public class Payment {
     private String expirationDateYear;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    private ByteUser userId;
+    private ByteUser byte_user;//changed this to byte_user
 
     @Column(name = "payment_created")
     @CreationTimestamp
