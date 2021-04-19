@@ -29,9 +29,6 @@ public class Review  {
     @Column(name = "review_terminated")
     private Date reviewTerminated;
 
-//    @ManyToOne
-//    private Product product;
-
     @ManyToOne
     private ByteOrder byteOrder;
 
