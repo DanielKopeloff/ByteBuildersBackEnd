@@ -16,6 +16,8 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "byteUsers", path = "byte-user")
 public interface ByteUserRepository extends JpaRepository<ByteUser, Integer> {
 
+    ByteUser findByUsername(String username);
+
     /** find byte_user for review by byte_order
      *
      * @param byteOrderId unique id for each order that can match a review to a user
