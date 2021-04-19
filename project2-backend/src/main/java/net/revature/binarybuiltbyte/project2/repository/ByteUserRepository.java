@@ -16,6 +16,9 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "byteUsers", path = "byte-user")
 public interface ByteUserRepository extends JpaRepository<ByteUser, Integer> {
 
+
+    ByteUser findByUsername(String username);
+
     /** find byte_user for review by byte_order
      *
      * @param byteOrderId unique id for each order that can match a review to a user
@@ -24,4 +27,5 @@ public interface ByteUserRepository extends JpaRepository<ByteUser, Integer> {
     @Query(value="select bu.id, bu.byte_role, bu.email, bu.first_name, bu.last_name, bu.\"password\", bu.profile_pic, bu.user_created, bu.user_terminated, bu.username from byte_user bu join byte_order bo on bo.byte_user_id = bu.id join review r on r.byte_order_id = bo.id where bo.id = :byteOrderId ;", nativeQuery = true)
     @RestResource(path = "byte_order_review", rel = "byte_order_review")
     List<ByteUser> findByteUserByByteOrder(@Param("byteOrderId") int byteOrderId);
+
 }
