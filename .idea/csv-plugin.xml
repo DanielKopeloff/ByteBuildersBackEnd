@@ -10,6 +10,48 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="\project2-backend\src\main\java\net\revature\binarybuiltbyte\project2\model\ByteOrder.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\project2-backend\src\main\java\net\revature\binarybuiltbyte\project2\model\ByteUser.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\project2-backend\src\main\java\net\revature\binarybuiltbyte\project2\model\Product.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\project2-backend\src\main\java\net\revature\binarybuiltbyte\project2\repository\ByteOrderRepository.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\project2-backend\src\main\java\net\revature\binarybuiltbyte\project2\repository\CategoryRepository.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
+        <entry key="\project2-backend\src\main\java\net\revature\binarybuiltbyte\project2\repository\ProductRepository.java">
+          <value>
+            <Attribute>
+              <option name="separator" value=";" />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
