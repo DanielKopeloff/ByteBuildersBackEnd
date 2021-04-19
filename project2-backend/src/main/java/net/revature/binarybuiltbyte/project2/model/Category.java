@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -19,14 +19,13 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "category_name")
     private String categoryName;
 
     @OneToMany(
             fetch = FetchType.LAZY,
-            mappedBy = "category",
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-    private List<Product> products;
+            cascade = CascadeType.ALL,
+            mappedBy="category")
+    private Set<Product> products;
 
 }
 

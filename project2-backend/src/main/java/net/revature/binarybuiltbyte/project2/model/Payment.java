@@ -8,7 +8,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.Month;
-import java.time.Year;
 import java.util.Date;
 
 @Entity
@@ -32,10 +31,11 @@ public class Payment {
     private String expirationDateYear;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    private ByteUser userId;
-    
+    private ByteUser byte_user;//changed this to byte_user
+
     @Column(name = "payment_created")
     @CreationTimestamp
     private Date paymentCreated;
 
 }
+
