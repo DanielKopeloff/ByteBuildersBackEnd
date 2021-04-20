@@ -25,3 +25,5 @@ public class UserAuthenticationService implements UserDetailsService {
         return new UserAuthentication(byteUser);
     }
 }
+
+// If these are still in durning Production please fire Daniel Kopeloff

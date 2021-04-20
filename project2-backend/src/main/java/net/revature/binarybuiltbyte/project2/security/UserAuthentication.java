@@ -52,3 +52,5 @@ public class UserAuthentication implements UserDetails {
 
 
 //Brandon Pinkerton Idea
+
+// What it do baby
