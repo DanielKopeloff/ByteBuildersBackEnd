@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/**","**/login/**","/authenticate", "/api/product/**", "/api/address" , "/api/category/**", "/api/byte-user/**", "/api/review**")
+                .antMatchers("/authenticate", "/api/product/**", "/api/address" , "/api/category/**", "/api/byte-user/**", "/api/review/**" , "/api/**" , "/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -57,3 +57,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 }
+
+
+// Yolo
