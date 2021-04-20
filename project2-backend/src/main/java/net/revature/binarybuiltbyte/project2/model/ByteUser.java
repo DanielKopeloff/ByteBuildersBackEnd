@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -40,7 +41,7 @@ public class ByteUser {
 
     @Column(name = "byte_role")
     @Enumerated(EnumType.ORDINAL)
-    private Role byteRole;
+    private Role role;
 
     @Column(name = "user_created")
     @CreationTimestamp

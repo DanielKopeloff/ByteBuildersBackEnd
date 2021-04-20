@@ -1,8 +1,6 @@
 package net.revature.binarybuiltbyte.project2;
 
 
-import net.revature.binarybuiltbyte.project2.model.Address;
-import net.revature.binarybuiltbyte.project2.model.ByteUser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
