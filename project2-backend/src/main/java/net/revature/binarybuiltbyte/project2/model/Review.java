@@ -1,5 +1,6 @@
 package net.revature.binarybuiltbyte.project2.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,9 +29,6 @@ public class Review  {
 
     @Column(name = "review_terminated")
     private Date reviewTerminated;
-
-//    @ManyToOne
-//    private Product product;
 
     @ManyToOne
     @JoinColumn(name = "byte_order_id")
