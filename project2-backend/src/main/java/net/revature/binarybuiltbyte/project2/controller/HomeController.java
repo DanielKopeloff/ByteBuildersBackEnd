@@ -1,11 +1,8 @@
+package net.revature.binarybuiltbyte.project2.controller;
 
-package net.revature.binarybuiltbyte.project2.Controller;
 import net.revature.binarybuiltbyte.project2.model.ByteUser;
 import net.revature.binarybuiltbyte.project2.repository.ByteUserRepository;
 import net.revature.binarybuiltbyte.project2.security.*;
-
-package net.revature.binarybuiltbyte.project2.controller;
-
 
 import net.revature.binarybuiltbyte.project2.model.ByteUser;
 import net.revature.binarybuiltbyte.project2.security.JwtRequest;

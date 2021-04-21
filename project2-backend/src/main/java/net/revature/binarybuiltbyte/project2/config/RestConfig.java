@@ -28,7 +28,7 @@ public class RestConfig implements RepositoryRestConfigurer {
 
     private void exposeIds(RepositoryRestConfiguration config) {
 
-        // get a list of all entity classes from teh entity manager
+        // get a list of all entity classes from the entity manager
         Set<EntityType<?>> entities = entityManager.getMetamodel().getEntities();
 
         // create an array of the entity types

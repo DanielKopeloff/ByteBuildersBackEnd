@@ -13,19 +13,18 @@ public class JwtResponse {
 
     private final String jwtToken;
     private ByteUser user;
-    private Date date;
+    private String expireDate;
 
-    public JwtResponse(String jwtToken, ByteUser user, Date date) {
+    public JwtResponse(String jwtToken, ByteUser user, Date expireDate) {
 
         this.jwtToken = jwtToken;
         this.user = user;
-        this.date = date;
+        this.expireDate = String.valueOf(expireDate.getTime());// this should return the number of seconds as a long?, should make it into a string?
     }
 
     public String getJwtToken(){
         return jwtToken;
     }
-
 
     public int getUserId(){
         return user.getId();
@@ -34,13 +33,10 @@ public class JwtResponse {
         return user.getEmail();
     }
     public String getName(){
-        return user.getFirstName();
+        return user.getUsername();
     }
-
-    public Date getDate(){
-        return date;
+    public String getExpireDate(){
+        return expireDate;
     }
 
 }
-
-// Wonder whast gonna happen
