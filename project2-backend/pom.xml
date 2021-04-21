@@ -80,7 +80,9 @@
             <artifactId>junit-jupiter</artifactId>
             <version>5.7.1</version>
             <scope>test</scope>
+
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -106,6 +108,7 @@
             <artifactId>jjwt</artifactId>
             <version>0.9.1</version>
         </dependency>
+
     </dependencies>
 
     <build>
