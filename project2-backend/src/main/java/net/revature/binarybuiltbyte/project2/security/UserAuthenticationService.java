@@ -14,7 +14,6 @@ public class UserAuthenticationService implements UserDetailsService {
     @Autowired
     ByteUserRepository userRepository;
 
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         ByteUser byteUser = userRepository.findByUsername(username);
@@ -22,4 +21,5 @@ public class UserAuthenticationService implements UserDetailsService {
 
         return new UserAuthentication(byteUser);
     }
+
 }
