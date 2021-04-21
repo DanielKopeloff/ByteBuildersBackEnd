@@ -1,5 +1,7 @@
 package net.revature.binarybuiltbyte.project2.security;
 
+
+
 import net.revature.binarybuiltbyte.project2.model.ByteUser;
 import net.revature.binarybuiltbyte.project2.repository.ByteUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +19,13 @@ public class UserAuthenticationService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         ByteUser byteUser = userRepository.findByUsername(username);
+        //int id = byteUser.getId();
+        //String email = byteUser.getEmail();
         if(byteUser == null) throw new UsernameNotFoundException(username);
 
         return new UserAuthentication(byteUser);
     }
 
 }
+
+// If these are still in durning Production please fire Daniel Kopeloff

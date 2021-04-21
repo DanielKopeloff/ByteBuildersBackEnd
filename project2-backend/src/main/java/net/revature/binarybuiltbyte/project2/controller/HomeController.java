@@ -1,3 +1,9 @@
+
+package net.revature.binarybuiltbyte.project2.Controller;
+import net.revature.binarybuiltbyte.project2.model.ByteUser;
+import net.revature.binarybuiltbyte.project2.repository.ByteUserRepository;
+import net.revature.binarybuiltbyte.project2.security.*;
+
 package net.revature.binarybuiltbyte.project2.controller;
 
 
@@ -6,6 +12,7 @@ import net.revature.binarybuiltbyte.project2.security.JwtRequest;
 import net.revature.binarybuiltbyte.project2.security.JwtResponse;
 import net.revature.binarybuiltbyte.project2.security.UserAuthenticationService;
 import net.revature.binarybuiltbyte.project2.security.JwtUtil;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,6 +29,9 @@ public class HomeController {
     private AuthenticationManager authenticationManager;
     @Autowired
     private UserAuthenticationService userService;
+
+    @Autowired
+    ByteUserRepository userRepository;
 
     @GetMapping("/")
     public String home() {
@@ -45,13 +55,13 @@ public class HomeController {
         final UserDetails userDetails
                 = userService.loadUserByUsername(jwtRequest.getUsername());
 
+        ByteUser byteUser = userRepository.findByUsername(jwtRequest.getUsername());
+
+
+
         final String token =
                 jwtUtil.generateToken(userDetails);
 
-        return  new JwtResponse(token);
+        return  new JwtResponse(token, byteUser, jwtUtil.getExpiration());
     }
-
-
-
-
 }

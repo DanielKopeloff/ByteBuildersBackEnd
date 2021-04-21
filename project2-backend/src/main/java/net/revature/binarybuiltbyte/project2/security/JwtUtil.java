@@ -3,7 +3,6 @@ package net.revature.binarybuiltbyte.project2.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +17,8 @@ public class JwtUtil {
     private final String SECRET_KEY = "1029384756";
 
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
+
+    private final Date Expiration = new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000);
 
     public String extractUsername(String token){
         return extractClaim(token, Claims::getSubject);
@@ -47,7 +48,7 @@ public class JwtUtil {
 
     private String createToken(Map<String, Object> claims, String subject) {
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + JWT_TOKEN_VALIDITY * 1000))
+                .setExpiration(getExpiration())
                 .signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
     }
 
@@ -55,4 +56,11 @@ public class JwtUtil {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
+
+    public Date getExpiration() {
+        return Expiration;
+    }
 }
+
+
+// i cant spell
