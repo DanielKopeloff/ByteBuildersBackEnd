@@ -21,17 +21,26 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "credit_card")
-    private String creditCard;
+    @Column(name = "nameOnCard")
+    private String nameOnCard;
+
+    @Column(name = "credit_card_number")
+    private Long creditCardNumber;
+
+    @Column(name = "credit_card_type")
+    private String creditCardType;
 
     @Column(name = "expiration_date_month")
-    private Month expirationDateMonth;
+    private int expirationDateMonth;
 
     @Column(name="expiration_date_year")
-    private String expirationDateYear;
+    private int expirationDateYear;
+
+//    @OneToOne(cascade = CascadeType.PERSIST)
+//    private ByteUser byteUser;//change
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    private ByteUser byteUser;//changed this to byte_user
+    private ByteOrder byteOrder;//c// d this to byte_user
 
     @Column(name = "payment_created")
     @CreationTimestamp

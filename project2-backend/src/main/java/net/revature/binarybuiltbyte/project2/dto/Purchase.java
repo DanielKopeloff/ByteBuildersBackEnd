@@ -1,10 +1,7 @@
 package net.revature.binarybuiltbyte.project2.dto;
 
 import lombok.Data;
-import net.revature.binarybuiltbyte.project2.model.Address;;
-import net.revature.binarybuiltbyte.project2.model.ByteOrder;
-import net.revature.binarybuiltbyte.project2.model.ByteUser;
-import net.revature.binarybuiltbyte.project2.model.ProductOrder;
+import net.revature.binarybuiltbyte.project2.model.*;;
 
 import java.util.Set;
 
@@ -15,6 +12,7 @@ public class Purchase {
     private Address shippingAddress;
     private Address billingAddress;
     private ByteOrder byteOrder;
+    private Payment payment;
     private Set<ProductOrder> productOrders;
 
 }
