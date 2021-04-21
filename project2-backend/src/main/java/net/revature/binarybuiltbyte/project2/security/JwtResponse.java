@@ -2,6 +2,8 @@ package net.revature.binarybuiltbyte.project2.security;
 
 import net.revature.binarybuiltbyte.project2.model.ByteUser;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Date;
 
 //@Data
@@ -13,8 +15,8 @@ public class JwtResponse {
     private ByteUser user;
     private Date date;
 
-
     public JwtResponse(String jwtToken, ByteUser user, Date date) {
+
         this.jwtToken = jwtToken;
         this.user = user;
         this.date = date;
@@ -23,6 +25,7 @@ public class JwtResponse {
     public String getJwtToken(){
         return jwtToken;
     }
+
 
     public int getUserId(){
         return user.getId();

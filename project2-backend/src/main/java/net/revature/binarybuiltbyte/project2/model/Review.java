@@ -33,6 +33,7 @@ public class Review  {
 //    private Product product;
 
     @ManyToOne
+    @JoinColumn(name = "byte_order_id")
     private ByteOrder byteOrder;
 
     @Column(name = "rating")

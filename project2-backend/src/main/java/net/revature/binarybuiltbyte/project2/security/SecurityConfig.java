@@ -34,21 +34,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf()
                 .disable()
                 .authorizeRequests()
-                .antMatchers("/swagger-ui.html","/authenticate", "/api/product/**", "/api/address" , "/api/byte-order/**",  "/api/category/**", "/api/byte-user/**", "/api/review/**" , "/api/**" , "/**", "/api/byte-user")
+                .antMatchers("/**","**/login/**","/authenticate", "/api/product/**", "/api/address" , "/api/category/**", "/api/byte-user/**", "/api/review**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
 
     }
-
-//    @Bean
-//    public PasswordEncoder passwordEncoder(){
-//        return new BCryptPasswordEncoder();
-//    }
 
     @Bean
     @Override
@@ -56,6 +52,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
+//        @Bean
+//    public PasswordEncoder passwordEncoder(){
+//        return new BCryptPasswordEncoder();
+//    }
 }
 
 
