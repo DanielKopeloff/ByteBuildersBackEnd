@@ -15,17 +15,18 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class ProductOrder {
 
-    @EmbeddedId
-    private ProductOrderId id = new ProductOrderId();
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
     private int quantity;
 
     @ManyToOne
-    @MapsId("productId")
+    @JoinColumn(name = "product_id")
     private Product product;
 
     @ManyToOne
-    @MapsId("byteOrderId")
+    @JoinColumn(name = "order_id")
     private ByteOrder byteOrder;
 
 }
