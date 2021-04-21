@@ -8,4 +8,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin("http://localhost:4200")
 @RepositoryRestResource(collectionResourceRel = "productOrders", path = "product-order")
 public interface ProductOrderRepository extends JpaRepository<ProductOrder, Integer> {
+
+
 }

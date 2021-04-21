@@ -1,5 +1,6 @@
 package net.revature.binarybuiltbyte.project2.repository;
 
+import net.revature.binarybuiltbyte.project2.model.ByteUser;
 import net.revature.binarybuiltbyte.project2.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -104,5 +105,27 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
             "    where product.id = :productId ;", nativeQuery = true)//works with url parameters inputed with a get, throws an error but updates db...
     @RestResource(path = "update_product_rating", rel = "update_product_rating")
     void updateProductAverageRating(@Param("productId") int productId);
+
+
+    /** Find some the recently purchased items
+     *
+     *
+     */
+    @Query(value="select distinct id ,category_id , description ,  is_active , picture , product_created , product_terminated , rating , sku , stock , price from (\n" +
+            "\tselect distinct on (po.byte_order_id) p2.category_id  , p2.description  , p2.id  , p2.is_active  , p2.picture  ,p2.price ,p2.product_created ,p2.product_terminated  , p2.rating  , p2.sku  ,p2.stock\n" +
+            "\tfrom byte_order bo , product_order po , product p2 \n" +
+            "\twhere po.byte_order_id  = bo.id and po.product_id = p2.id order by po.byte_order_id desc nulls last\n" +
+            ") t\n", nativeQuery = true)
+    @RestResource(path = "hotItems", rel = "hotItems")
+    List<Product> findRecentlyPurchasedItems();
+
+
+    /** Find some the recently purchased items
+     *
+     *
+     */
+    @Query(value="select * from product p  where p.product_created  <= current_timestamp order by p.product_created desc ;", nativeQuery = true)
+    @RestResource(path = "newItems", rel = "newItems")
+    List<Product> findNewlyAddedITems();
 }
 
