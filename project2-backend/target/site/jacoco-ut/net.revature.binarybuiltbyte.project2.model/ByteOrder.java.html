@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ByteOrder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project2</a> &gt; <a href="index.source.html" class="el_package">net.revature.binarybuiltbyte.project2.model</a> &gt; <span class="el_source">ByteOrder.java</span></div><h1>ByteOrder.java</h1><pre class="source lang-java linenums">package net.revature.binarybuiltbyte.project2.model;
+
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Entity
+@Table(name = &quot;byte_order&quot;)
+@Getter
+<span class="nc" id="L16">@Setter</span>
+<span class="fc" id="L17">public class ByteOrder {</span>
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+<span class="nc" id="L21">    private int id;</span>
+
+<span class="nc" id="L23">    private int totalQuantity;</span>
+
+<span class="nc" id="L25">    private double totalPrice;</span>
+
+    @Enumerated(EnumType.ORDINAL)
+<span class="nc" id="L28">    private Status status;</span>
+
+    @Column(name = &quot;order_created&quot;)
+    @CreationTimestamp
+<span class="nc" id="L32">    private Date orderCreated;</span>
+
+    @Column(name = &quot;order_completed&quot;)
+    @UpdateTimestamp
+<span class="nc" id="L36">    private Date orderCompleted;</span>
+
+<span class="fc" id="L38">    @OneToMany(mappedBy = &quot;byteOrder&quot;)</span>
+<span class="nc" id="L39">    private Set&lt;ProductOrder&gt; productOrders = new HashSet&lt;&gt;();</span>
+
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinColumn(name = &quot;byte_user_id&quot;)
+<span class="nc" id="L45">    private ByteUser byteUser;</span>
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = &quot;shipping_address_id&quot;, referencedColumnName = &quot;id&quot;)
+<span class="nc" id="L49">    private Address shippingAddress;</span>
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = &quot;billing_address_id&quot;, referencedColumnName = &quot;id&quot;)
+<span class="nc" id="L53">    private Address billingAddress;</span>
+
+    @OneToMany(
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            mappedBy=&quot;byteOrder&quot;)
+<span class="nc" id="L59">    private List&lt;Review&gt; reviews;</span>
+
+    public void add(ProductOrder productOrder) {
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if (productOrder != null) {</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            if (productOrders == null) {</span>
+<span class="nc" id="L64">                productOrders = new HashSet&lt;&gt;();</span>
+            }
+<span class="nc" id="L66">            productOrders.add(productOrder);</span>
+<span class="nc" id="L67">            productOrder.setByteOrder(this);</span>
+        }
+<span class="nc" id="L69">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

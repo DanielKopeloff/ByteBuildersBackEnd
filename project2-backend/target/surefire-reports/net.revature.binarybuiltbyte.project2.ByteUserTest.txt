@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: net.revature.binarybuiltbyte.project2.ByteUserTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.159 s <<< FAILURE! - in net.revature.binarybuiltbyte.project2.ByteUserTest
+checkReturningFields  Time elapsed: 0.051 s  <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.._embedded.byteUsers.[0].byteRole"
+	at net.revature.binarybuiltbyte.project2.ByteUserTest.checkReturningFields(ByteUserTest.java:44)
+
+checkReturnID1  Time elapsed: 0.017 s  <<< FAILURE!
+java.lang.AssertionError: JSON path "$.username" expected:<danielK> but was:<usernameExample>
+	at net.revature.binarybuiltbyte.project2.ByteUserTest.checkReturnID1(ByteUserTest.java:76)
+
+checkPopulatingCorrectly  Time elapsed: 0.09 s  <<< FAILURE!
+java.lang.AssertionError: JSON path "$.._embedded.byteUsers.[0].username" expected:<danielK> but was:<usernameExample>
+	at net.revature.binarybuiltbyte.project2.ByteUserTest.checkPopulatingCorrectly(ByteUserTest.java:57)
+

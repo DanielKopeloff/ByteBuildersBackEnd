@@ -1,0 +1,16 @@
+-------------------------------------------------------------------------------
+Test set: net.revature.binarybuiltbyte.project2.AddressTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 14.42 s <<< FAILURE! - in net.revature.binarybuiltbyte.project2.AddressTest
+checkReturningFields  Time elapsed: 1.107 s  <<< FAILURE!
+java.lang.AssertionError: No value at JSON path "$.._embedded.addresses.[0]._links.byteUser"
+	at net.revature.binarybuiltbyte.project2.AddressTest.checkReturningFields(AddressTest.java:41)
+
+checkReturnID1  Time elapsed: 0.088 s  <<< FAILURE!
+java.lang.AssertionError: JSON path "$.streetAddress" expected:<333 Santa Fe Ave> but was:<123 elm street>
+	at net.revature.binarybuiltbyte.project2.AddressTest.checkReturnID1(AddressTest.java:85)
+
+checkPopulatingCorrectly  Time elapsed: 0.098 s  <<< FAILURE!
+java.lang.AssertionError: JSON path "$.._embedded.addresses.[0].streetAddress" expected:<333 Santa Fe Ave> but was:<123 elm street>
+	at net.revature.binarybuiltbyte.project2.AddressTest.checkPopulatingCorrectly(AddressTest.java:70)
+

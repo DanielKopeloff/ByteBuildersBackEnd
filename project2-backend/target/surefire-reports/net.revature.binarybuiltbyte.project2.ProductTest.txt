@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: net.revature.binarybuiltbyte.project2.ProductTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.16 s <<< FAILURE! - in net.revature.binarybuiltbyte.project2.ProductTest
+checkReturnID1  Time elapsed: 0.016 s  <<< FAILURE!
+java.lang.AssertionError: JSON path "$.description" expected:<AMD RYZEN 7 3700X 8-Core 3.6 GHz (4.4 GHz Max Boost) Socket AM4 65W 100-100000071BOX Desktop Processor> but was:<macbook pro>
+	at net.revature.binarybuiltbyte.project2.ProductTest.checkReturnID1(ProductTest.java:78)
+
+checkPopulatingCorrectly  Time elapsed: 0.085 s  <<< FAILURE!
+java.lang.AssertionError: JSON path "$.._embedded.products.[0].description" expected:<AMD RYZEN 7 3700X 8-Core 3.6 GHz (4.4 GHz Max Boost) Socket AM4 65W 100-100000071BOX Desktop Processor> but was:<macbook pro>
+	at net.revature.binarybuiltbyte.project2.ProductTest.checkPopulatingCorrectly(ProductTest.java:58)
+

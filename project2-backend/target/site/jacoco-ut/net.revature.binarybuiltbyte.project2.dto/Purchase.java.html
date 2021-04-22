@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Purchase.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project2</a> &gt; <a href="index.source.html" class="el_package">net.revature.binarybuiltbyte.project2.dto</a> &gt; <span class="el_source">Purchase.java</span></div><h1>Purchase.java</h1><pre class="source lang-java linenums">package net.revature.binarybuiltbyte.project2.dto;
+
+import lombok.Data;
+import net.revature.binarybuiltbyte.project2.model.Address;;
+import net.revature.binarybuiltbyte.project2.model.ByteOrder;
+import net.revature.binarybuiltbyte.project2.model.ByteUser;
+import net.revature.binarybuiltbyte.project2.model.ProductOrder;
+
+import java.util.Set;
+
+<span class="nc bnc" id="L11" title="All 46 branches missed.">@Data</span>
+public class Purchase {
+
+<span class="nc" id="L14">    private ByteUser byteUser;</span>
+<span class="nc" id="L15">    private Address shippingAddress;</span>
+<span class="nc" id="L16">    private Address billingAddress;</span>
+<span class="nc" id="L17">    private ByteOrder byteOrder;</span>
+<span class="nc" id="L18">    private Set&lt;ProductOrder&gt; productOrders;</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
