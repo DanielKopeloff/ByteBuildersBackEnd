@@ -23,7 +23,7 @@ import java.util.List;
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
     Page<Product> findByCategoryId(@RequestParam("id") Integer id, Pageable pageable);
-    Page<Product> findByDescriptionContaining(@RequestParam("name") String name, Pageable pageable);
+    Page<Product> findByDescriptionContainingIgnoreCase(@RequestParam("name") String name, Pageable pageable);
 
     /** this endpoint could be used for hot products to buy.
      *

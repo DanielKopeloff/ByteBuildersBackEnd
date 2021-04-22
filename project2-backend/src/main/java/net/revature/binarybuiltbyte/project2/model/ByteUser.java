@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -54,17 +54,16 @@ public class ByteUser {
             fetch = FetchType.LAZY,
             mappedBy = "byteUser",
             cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-    private Set<Address> addresses;
+    private Set<ByteOrder> byteOrders = new HashSet<>();
 
-    @OneToMany(
-            fetch = FetchType.LAZY,
-            mappedBy = "byteUser",
-            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-    private Set<ByteOrder> byteOrders;
-
-//    @OneToMany(
-//            fetch = FetchType.LAZY,
-//            cascade = CascadeType.ALL)
-//    private Set<Review> reviews;
+    public void add(ByteOrder byteOrder) {
+        if (byteOrder != null) {
+            if (byteOrders == null) {
+                byteOrders = new HashSet<>();
+            }
+            byteOrders.add(byteOrder);
+            byteOrder.setByteUser(this);
+        }
+    }
 
 }
