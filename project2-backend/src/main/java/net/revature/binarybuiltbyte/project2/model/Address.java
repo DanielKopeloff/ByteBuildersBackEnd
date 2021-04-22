@@ -28,7 +28,9 @@ public class Address {
 
     private String zip;
 
-    @OneToOne
-    @PrimaryKeyJoinColumn
-    private ByteOrder byteOrder;
+    @ManyToOne(
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    private ByteUser byteUser;
+
 }
