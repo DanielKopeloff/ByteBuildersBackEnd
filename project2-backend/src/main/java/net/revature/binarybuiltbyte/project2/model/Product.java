@@ -8,7 +8,9 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -52,5 +54,19 @@ public class Product {
 
     @ManyToOne
     private Category category;
+
+    @OneToMany(mappedBy = "byteOrder")
+    private Set<ProductOrder> productOrders = new HashSet<>();
+
+    public void add(ProductOrder productOrder) {
+        if (productOrder != null) {
+            if (productOrders == null) {
+                productOrders = new HashSet<>();
+            }
+            productOrders.add(productOrder);
+            productOrder.setProduct(this);
+        }
+    }
+
     
 }
