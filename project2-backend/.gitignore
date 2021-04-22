@@ -1,6 +1,6 @@
 project2-backend/src/main/resources/application.properties
 HELP.md
-.idea
+.idea/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
