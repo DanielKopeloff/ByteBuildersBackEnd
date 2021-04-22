@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: net.revature.binarybuiltbyte.project2.CategoryTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.078 s <<< FAILURE! - in net.revature.binarybuiltbyte.project2.CategoryTest
+checkReturnID1  Time elapsed: 0.012 s  <<< FAILURE!
+java.lang.AssertionError: JSON path "$.categoryName" expected:<CPU> but was:<laptop>
+	at net.revature.binarybuiltbyte.project2.CategoryTest.checkReturnID1(CategoryTest.java:57)
+
+checkPopulatingCorrectly  Time elapsed: 0.054 s  <<< FAILURE!
+java.lang.AssertionError: JSON path "$.._embedded.category.[0].categoryName" expected:<CPU> but was:<laptop>
+	at net.revature.binarybuiltbyte.project2.CategoryTest.checkPopulatingCorrectly(CategoryTest.java:46)
+
