@@ -35,11 +35,11 @@ public interface ByteUserRepository extends JpaRepository<ByteUser, Integer> {
     ByteUser findByteUserByReview(@Param("reviewId") int reviewId);
 
     /**
-     * Find the byte user by the review Id
+     * Find the byte users by the review Id
      */
     @Query(value="select bu.byte_role  , bu.email  ,bu.first_name  , bu.id , bu.last_name , bu.last_name  , bu.\"password\"  , bu.profile_pic  , bu.user_created  , bu.user_terminated  , bu.username " +
             "from review r , byte_order bo , byte_user bu , product_order po " +
-            "where r.byte_order_id  = bo.id and bu.id = bo.byte_user_id and po.byte_order_id = bo.id and po.product_id = :productId ; ", nativeQuery = true)
+            "where r.byte_order_id  = bo.id and bu.id = bo.byte_user_id and po.order_id = bo.id and po.product_id = :productId ; ", nativeQuery = true)
     @RestResource(path = "reviewUsers", rel = "reviewUsers")
     List<ByteUser> findByteUsersFromReview(@Param("productId") int productId);
 

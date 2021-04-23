@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @RepositoryRestResource(collectionResourceRel = "byteOrders", path = "byte-order")
 public interface ByteOrderRepository extends JpaRepository<ByteOrder, Integer> {
 
-    @Query(value="select bo.byte_user_id , bo.id  , bo.order_completed , bo.order_created , bo.status " +
+    @Query(value="select bo.id " +
             "from byte_order bo , byte_user bu , product_order po " +
-            "where bo.byte_user_id = bu.id  and po.byte_order_id = bo.id and po.product_id = :productId and bo.byte_user_id=:userId  ; \n", nativeQuery = true)
+            "where bu.id = bo.byte_user_id and po.order_id = bo.id and po.product_id  = :productId and byte_user_id = :userId ; ", nativeQuery = true)
     @RestResource(path = "byteOrderReview", rel = "byteOrderReview")
-    ByteOrder findAByte(@Param("productId") int productId , @Param("userId") int userId);
+    int findAByte(@Param("productId") int productId , @Param("userId") int userId);
 
 
 }
