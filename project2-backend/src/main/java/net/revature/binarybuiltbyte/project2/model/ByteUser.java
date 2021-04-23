@@ -1,5 +1,6 @@
 package net.revature.binarybuiltbyte.project2.model;
 
+import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,6 +26,7 @@ public class ByteUser {
     private int id;
 
     @Column(name = "username", unique = true)
+    @NotNull
     private String username;
 
     @Column(name = "password")
