@@ -38,5 +38,8 @@ public class JwtResponse {
     public String getExpireDate(){
         return expireDate;
     }
+    public Date getUserCreated(){
+        return user.getUserCreated();
+    }
 
 }
