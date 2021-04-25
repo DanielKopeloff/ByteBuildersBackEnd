@@ -18,7 +18,7 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
-@CrossOrigin(origins = {"http://localhost:4200" , "http://bytebuildersbucket.s3-website.us-east-2.amazonaws.com/**"})
+@CrossOrigin(origins = {"http://localhost:4200" , "http://bytebuildersbucket.s3-website.us-east-2.amazonaws.com"})
 @RepositoryRestResource(collectionResourceRel = "products", path = "product")
 public interface ProductRepository extends JpaRepository<Product, Integer> {
 
