@@ -4,7 +4,7 @@ import net.revature.binarybuiltbyte.project2.dto.Purchase;
 import net.revature.binarybuiltbyte.project2.service.CheckoutService;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://bytebuildersbucket.s3-website.us-east-2.amazonaws.com"})
 @RestController
 @RequestMapping("/api/checkout")
 public class CheckoutController {
