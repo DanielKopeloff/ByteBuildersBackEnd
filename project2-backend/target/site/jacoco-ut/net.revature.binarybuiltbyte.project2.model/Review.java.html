@@ -19,23 +19,23 @@ public class Review  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-<span class="nc" id="L22">    private int id;</span>
+<span class="fc" id="L22">    private int id;</span>
 
-<span class="nc" id="L24">    private String comment;</span>
+<span class="fc" id="L24">    private String comment;</span>
 
     @Column(name = &quot;review_created&quot;)
     @CreationTimestamp
-<span class="nc" id="L28">    private Date reviewCreated;</span>
+<span class="fc" id="L28">    private Date reviewCreated;</span>
 
     @Column(name = &quot;review_terminated&quot;)
-<span class="nc" id="L31">    private Date reviewTerminated;</span>
+<span class="fc" id="L31">    private Date reviewTerminated;</span>
 
     @ManyToOne
     @JoinColumn(name = &quot;byte_order_id&quot;)
 <span class="nc" id="L35">    private ByteOrder byteOrder;</span>
 
     @Column(name = &quot;rating&quot;)
-<span class="nc" id="L38">    private int rating;</span>
+<span class="fc" id="L38">    private int rating;</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

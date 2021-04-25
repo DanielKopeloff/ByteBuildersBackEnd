@@ -1,16 +1,16 @@
 -------------------------------------------------------------------------------
 Test set: net.revature.binarybuiltbyte.project2.ProductOrderTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.052 s <<< FAILURE! - in net.revature.binarybuiltbyte.project2.ProductOrderTest
-checkReturningFields  Time elapsed: 0.015 s  <<< FAILURE!
+Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.546 s <<< FAILURE! - in net.revature.binarybuiltbyte.project2.ProductOrderTest
+checkReturningFields  Time elapsed: 0.169 s  <<< FAILURE!
 java.lang.AssertionError: No value at JSON path "$.._embedded.productOrders.[0].id.productId"
 	at net.revature.binarybuiltbyte.project2.ProductOrderTest.checkReturningFields(ProductOrderTest.java:34)
 
-checkReturnID1  Time elapsed: 0.014 s  <<< FAILURE!
+checkReturnID1  Time elapsed: 0.192 s  <<< FAILURE!
 java.lang.AssertionError: No matching value at JSON path "$.._embedded.productOrders.[0].id.productId"
 	at net.revature.binarybuiltbyte.project2.ProductOrderTest.checkReturnID1(ProductOrderTest.java:65)
 
-checkPopulatingCorrectly  Time elapsed: 0.022 s  <<< FAILURE!
+checkPopulatingCorrectly  Time elapsed: 0.184 s  <<< FAILURE!
 java.lang.AssertionError: No matching value at JSON path "$.._embedded.productOrders.[0].id.productId"
 	at net.revature.binarybuiltbyte.project2.ProductOrderTest.checkPopulatingCorrectly(ProductOrderTest.java:50)
 
