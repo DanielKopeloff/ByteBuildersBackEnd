@@ -1,16 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: net.revature.binarybuiltbyte.project2.ReviewTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 3, Errors: 0, Skipped: 0, Time elapsed: 0.027 s <<< FAILURE! - in net.revature.binarybuiltbyte.project2.ReviewTest
-checkReturningFields  Time elapsed: 0.011 s  <<< FAILURE!
-java.lang.AssertionError: No value at JSON path "$.._embedded.reviews.[0].id"
-	at net.revature.binarybuiltbyte.project2.ReviewTest.checkReturningFields(ReviewTest.java:33)
-
-checkReturnID1  Time elapsed: 0.007 s  <<< FAILURE!
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.339 s <<< FAILURE! - in net.revature.binarybuiltbyte.project2.ReviewTest
+checkReturnID1  Time elapsed: 0.072 s  <<< FAILURE!
 java.lang.AssertionError: Status expected:<200> but was:<404>
 	at net.revature.binarybuiltbyte.project2.ReviewTest.checkReturnID1(ReviewTest.java:62)
 
-checkPopulatingCorrectly  Time elapsed: 0.009 s  <<< FAILURE!
-java.lang.AssertionError: No matching value at JSON path "$.._embedded.reviews.[0].id"
+checkPopulatingCorrectly  Time elapsed: 0.143 s  <<< FAILURE!
+java.lang.AssertionError: JSON path "$.._embedded.reviews.[0].id" expected:<1> but was:<2>
 	at net.revature.binarybuiltbyte.project2.ReviewTest.checkPopulatingCorrectly(ReviewTest.java:49)
 
