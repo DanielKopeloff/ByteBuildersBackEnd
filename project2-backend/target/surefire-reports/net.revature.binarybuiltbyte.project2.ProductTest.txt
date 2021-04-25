@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: net.revature.binarybuiltbyte.project2.ProductTest
--------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.56 s - in net.revature.binarybuiltbyte.project2.ProductTest
