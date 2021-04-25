@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-@CrossOrigin("http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200" , "http://bytebuildersbucket.s3-website.us-east-2.amazonaws.com"})
 @RepositoryRestResource(collectionResourceRel = "byteUsers", path = "byte-user")
 public interface ByteUserRepository extends JpaRepository<ByteUser, Integer> {
 
